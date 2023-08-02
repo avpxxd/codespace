@@ -29,6 +29,6 @@ function solve(){
   document.getElementById("result").value = mathResult;
 }
 
-function clear(){
+function Clr(){
   document.getElementById("result").value = "";
 }
