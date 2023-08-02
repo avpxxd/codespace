@@ -30,9 +30,7 @@ function solve(){
 }
 
 function evaluate(result){
-  console.log(result.split(""));
-
-  
+  return eval(result);
 }
 
 function Clr(){
