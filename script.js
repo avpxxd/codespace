@@ -9,7 +9,7 @@ function myFunction(event){
     event.key == '6' || event.key == '7' ||
     event.key == '8' || event.key == '9' ||
     event.key == '+' || event.key == '-' ||
-    event.key == 'X' || event.key == '÷' ){
+    event.key == '*' || event.key == '/' ){
     document.getElementById("result").value += event.key;
     }
 }
@@ -27,6 +27,12 @@ function solve(){
   let resultValue = document.getElementById("result").value;
   let y = math.evaluate(resultValue);
   document.getElementById("result").value = mathResult;
+}
+
+function evaluate(result){
+  console.log(result.split(""));
+
+  
 }
 
 function Clr(){
