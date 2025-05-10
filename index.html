@@ -1,51 +1,24 @@
-<link rel="stylesheet" type="text/css"
-href="./styles.css" />
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KMA Calc</title>
-  <link rel="icon" type="image/png" href="icon.png">
-  <script src="script.js"></script>
+  <title>Simple Chat</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-  <table id="calculator">
-    <tr>
-      <td colspan= "3">
-        <input type="text" id="result">
-      </td>
-      <td>
-        <input type="button" value="Clear" onclick="Clr()">
-      </td>
-    </tr>
-    <tr>
-      <td><input type="button" value="1" onclick="display('1')" onkeydown="myFunction(event)"></td>
-      <td><input type="button" value="2" onclick="display('2')" onkeydown="myFunction(event)"></td>
-      <td><input type="button" value="3" onclick="display('3')" onkeydown="myFunction(event)"></td>
-      <td><input type="button" value="/" onclick="display('/')" onkeydown="myFunction(event)"></td>
-    </tr>
-    <tr>
-      <td><input type="button" value="4" onclick="display('4')" onkeydown="myFunction(event)"></td>
-      <td><input type="button" value="5" onclick="display('5')" onkeydown="myFunction(event)"></td>
-      <td><input type="button" value="6" onclick="display('6')" onkeydown="myFunction(event)"></td>
-      <td><input type="button" value="*" onclick="display('*')" onkeydown="myFunction(event)"></td>
-    </tr>
-    <tr>
-      <td><input type="button" value="7" onclick="display('7')" onkeydown="myFunction(event)"></td>
-      <td><input type="button" value="8" onclick="display('8')" onkeydown="myFunction(event)"></td>
-      <td><input type="button" value="9" onclick="display('9')" onkeydown="myFunction(event)"></td>
-      <td><input type="button" value="-" onclick="display('-')" onkeydown="myFunction(event)"></td>
-    </tr>
-    <tr>
-      <td><input type="button" value="0" onclick="display('0')" onkeydown="myFunction(event)"></td>
-      <td><input type="button" value="." onclick="display('.')" onkeydown="myFunction(event)"></td>
-      <td><input type="button" value="=" onclick="display('=')" onkeydown="myFunction(event)"></td>
-      <td><input type="button" value="+" onclick="display('+')" onkeydown="myFunction(event)"></td>
-    </tr>
+  <div id="login">
+    <h2>Enter Username</h2>
+    <input type="text" id="username" placeholder="Username">
+    <button onclick="login()">Enter Chat</button>
+  </div>
 
-  </table>
+  <div id="chat" style="display: none;">
+    <h2>Simple Chat</h2>
+    <div id="messages"></div>
+    <input type="text" id="message" placeholder="Type a message">
+    <button onclick="sendMessage()">Send</button>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
-
