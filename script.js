@@ -1,38 +1,35 @@
-function display(val){
-  document.getElementById("result").value += val;
-}
-function myFunction(event){
-  if(
-    event.key == '0' || event.key == '1' ||
-    event.key == '2' || event.key == '3' ||
-    event.key == '4' || event.key == '5' ||
-    event.key == '6' || event.key == '7' ||
-    event.key == '8' || event.key == '9' ||
-    event.key == '+' || event.key == '-' ||
-    event.key == '*' || event.key == '/' ){
-    document.getElementById("result").value += event.key;
-    }
-}
-var calc = document.getElementById("calculator");
-calc.onkeyup = function(event){
-  if(event.keyCode === 13){
-    console.log("Enter");
-    let resultValue = document.getElementById("result").value;
-    console.log(resultValue);
-    solve();
+let currentUser = "";
+
+function login() {
+  const username = document.getElementById("username").value.trim();
+  if (username) {
+    currentUser = username;
+    document.getElementById("login").style.display = "none";
+    document.getElementById("chat").style.display = "block";
+    loadMessages();
   }
 }
 
-function solve(){
-  let resultValue = document.getElementById("result").value;
-  let y = math.evaluate(resultValue);
-  document.getElementById("result").value = mathResult;
+function sendMessage() {
+  const text = document.getElementById("message").value.trim();
+  if (text) {
+    const message = { user: currentUser, text: text };
+    let messages = JSON.parse(localStorage.getItem("chatMessages")) || [];
+    messages.push(message);
+    localStorage.setItem("chatMessages", JSON.stringify(messages));
+    document.getElementById("message").value = "";
+    loadMessages();
+  }
 }
 
-function evaluate(result){
-  return eval(result);
-}
-
-function Clr(){
-  document.getElementById("result").value = "";
+function loadMessages() {
+  const messages = JSON.parse(localStorage.getItem("chatMessages")) || [];
+  const messagesDiv = document.getElementById("messages");
+  messagesDiv.innerHTML = "";
+  messages.forEach(msg => {
+    const msgEl = document.createElement("div");
+    msgEl.textContent = `${msg.user}: ${msg.text}`;
+    messagesDiv.appendChild(msgEl);
+  });
+  messagesDiv.scrollTop = messagesDiv.scrollHeight;
 }
