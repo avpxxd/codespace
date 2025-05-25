@@ -1,24 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Simple Chat</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Protected Page</title>
+    <script>
+        function checkPassword() {
+            var password = "password"; // Set your password here
+            var userInput = prompt("Please enter the password to view this page:");
+    
+            if (userInput === password) {
+                // Password is correct, show the content
+                document.getElementById("protectedContent").style.display = "block";
+            } else {
+                // Password is incorrect, redirect or show an error
+                alert("Incorrect password. You will be redirected.");
+                window.location.href = "https://avpxxd.github.io/dlsite"; // Redirect to another page
+            }
+        }
+    </script>
 </head>
-<body>
-  <div id="login">
-    <h2>Enter Username</h2>
-    <input type="text" id="username" placeholder="Username">
-    <button onclick="login()">Enter Chat</button>
-  </div>
-
-  <div id="chat" style="display: none;">
-    <h2>Simple Chat</h2>
-    <div id="messages"></div>
-    <input type="text" id="message" placeholder="Type a message">
-    <button onclick="sendMessage()">Send</button>
-  </div>
-
-  <script src="script.js"></script>
+<body onload="checkPassword()">
+    <div id="protectedContent" style="display:none;">
+        <h1>Welcome to the Protected Page</h1>
+        <p>This content is protected by a password.</p>
+    </div>
 </body>
 </html>
