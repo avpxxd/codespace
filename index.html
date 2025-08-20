@@ -8,11 +8,12 @@
       font-family: Arial, sans-serif;
       background-color: #f9f9f9;
       display: flex;
-      justify-content: center;
-      align-items: center;
       height: 100vh;
     }
-
+    .cabox {
+      justify-content: center;
+      align-items: center;
+    }
     .recaptcha-box {
       background-color: #fff;
       border: 1px solid #d3d3d3;
@@ -78,22 +79,23 @@
     }
   </style>
 </head>
-<button onclick="location.href = 'www.damvan.ca';" id="myButton" class="align-items: left;">Return To Damvan.ca</button>
 <body>
-  <div class="recaptcha-box" onclick="triggerCaptcha()">
-  <div class="checkbox-area">
-    <div id="checkbox" class="fake-checkbox"></div>
+  <button onclick="location.href = 'www.damvan.ca';" id="myButton">Return To Damvan.ca</button>
+  <div class="cabox">
+    <div class="recaptcha-box" onclick="triggerCaptcha()">
+      <div class="checkbox-area">
+        <div id="checkbox" class="fake-checkbox"></div>
 
-  <!-- Spinner + Label grouped together -->
-    <div class="spinner-label">
-      <div class="spinner" id="spinner"></div>
-      <div class="label-text">I am not a human</div>
+        <!-- Spinner + Label grouped together -->
+        <div class="spinner-label">
+          <div class="spinner" id="spinner"></div>
+          <div class="label-text">I am not a human</div>
+        </div>
+      </div>
+      <div class="fail-message" id="failMsg">Verification failed. Try again.</div>
+      <div class="recaptcha-logo">reCAPTCHA parody</div>
     </div>
   </div>
-  <div class="fail-message" id="failMsg">Verification failed. Try again.</div>
-  <div class="recaptcha-logo">reCAPTCHA parody</div>
-</div>
-
 
   <script>
     let firstAttempt = true;
