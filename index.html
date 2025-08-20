@@ -95,29 +95,24 @@
 
 
   <script>
-  function triggerCaptcha() {
-    const checkbox = document.getElementById('checkbox');
-    const spinner = document.getElementById('spinner');
-    const failMsg = document.getElementById('failMsg');
+    function triggerCaptcha() {
+      const checkbox = document.getElementById('checkbox');
+      const spinner = document.getElementById('spinner');
+      const failMsg = document.getElementById('failMsg');
 
-    // If checkbox is hidden, it means we're in a failed state — reset it
-    if (checkbox.style.display === 'none') {
-      checkbox.style.display = 'block';
+      // Always hide the fail message when starting a new attempt
       failMsg.style.display = 'none';
-    return;
+
+      // Start verification
+      checkbox.style.display = 'none';
+      spinner.style.display = 'block';
+
+      setTimeout(() => {
+        spinner.style.display = 'none';
+        failMsg.style.display = 'block';
+        // Message stays until next click
+      }, 2000);
     }
-
-    // Begin verification attempt
-    checkbox.style.display = 'none';
-    spinner.style.display = 'block';
-    failMsg.style.display = 'none';
-
-    setTimeout(() => {
-      spinner.style.display = 'none';
-      failMsg.style.display = 'block';
-      // Don't auto-reset — wait for user to click again
-    }, 2000);
-  }
   </script>
 </body>
 </html>
