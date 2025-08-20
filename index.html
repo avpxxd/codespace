@@ -100,6 +100,14 @@
     const spinner = document.getElementById('spinner');
     const failMsg = document.getElementById('failMsg');
 
+    // If checkbox is hidden, it means we're in a failed state — reset it
+    if (checkbox.style.display === 'none') {
+      checkbox.style.display = 'block';
+      failMsg.style.display = 'none';
+    return;
+    }
+
+    // Begin verification attempt
     checkbox.style.display = 'none';
     spinner.style.display = 'block';
     failMsg.style.display = 'none';
@@ -107,12 +115,7 @@
     setTimeout(() => {
       spinner.style.display = 'none';
       failMsg.style.display = 'block';
-
-      // Wait a bit, then bring back the checkbox
-      setTimeout(() => {
-        failMsg.style.display = 'none';
-        checkbox.style.display = 'block';
-      }, 0); // Adjust this delay if you want it faster/slower
+      // Don't auto-reset — wait for user to click again
     }, 2000);
   }
   </script>
