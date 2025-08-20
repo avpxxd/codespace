@@ -100,19 +100,21 @@
       const spinner = document.getElementById('spinner');
       const failMsg = document.getElementById('failMsg');
 
-      // Always hide the fail message when starting a new attempt
+      // Hide fail message at start
       failMsg.style.display = 'none';
 
-      // Start verification
+      // Hide checkbox, show spinner
       checkbox.style.display = 'none';
       spinner.style.display = 'block';
+
+      // Random delay between 1000ms and 5000ms
+      const delay = Math.floor(Math.random() * 4000) + 1000;
 
       setTimeout(() => {
         spinner.style.display = 'none';
         failMsg.style.display = 'block';
-        checkbox.style.display = 'block';
-        // Message stays until next click
-      }, 2000);
+        checkbox.style.display = 'block'; // Let them try again
+      }, delay);
     }
   </script>
 </body>
