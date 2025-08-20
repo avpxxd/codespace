@@ -21,8 +21,8 @@
       width: 300px;
       box-shadow: 0 0 5px rgba(0,0,0,0.1);
       position: relative;
+      overflow: hidden; /* Keeps everything inside */
     }
-
     .checkbox-area {
       display: flex;
       align-items: center;
@@ -45,10 +45,8 @@
       width: 24px;
       height: 24px;
       animation: spin 1s linear infinite;
-      position: absolute;
-      top: -2px;
-      left: -2px;
       display: none;
+      margin: 10px auto;
     }
 
     @keyframes spin {
@@ -64,9 +62,9 @@
       color: red;
       font-size: 13px;
       margin-top: 15px;
+      text-align: center;
       display: none;
     }
-
     .recaptcha-logo {
       margin-top: 15px;
       font-size: 10px;
@@ -77,16 +75,15 @@
 </head>
 <body>
   <div class="recaptcha-box" onclick="triggerCaptcha()">
-    <div class="checkbox-area">
-      <div class="fake-checkbox" id="checkbox"></div>
-        <div class="label-text">I am not a robot</div>
-    </div>
-<div class="spinner" id="spinner"></div>
-
-    </div>
-    <div class="fail-message" id="failMsg">❌ Verification failed. Try again.</div>
-    <div class="recaptcha-logo">reCAPTCHA parody</div>
+  <div class="checkbox-area">
+    <div class="fake-checkbox" id="checkbox"></div>
+    <div class="label-text">I am not a robot</div>
   </div>
+  <div class="spinner" id="spinner"></div>
+  <div class="fail-message" id="failMsg">Verification failed. Try again.</div>
+  <div class="recaptcha-logo">reCAPTCHA parody</div>
+</div>
+
 
   <script>
     function triggerCaptcha() {
