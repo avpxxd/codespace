@@ -86,20 +86,26 @@
 
 
   <script>
-    function triggerCaptcha() {
-      const spinner = document.getElementById('spinner');
-      const failMsg = document.getElementById('failMsg');
-      const checkbox = document.getElementById('checkbox');
+  function triggerCaptcha() {
+    const checkbox = document.getElementById('checkbox');
+    const spinner = document.getElementById('spinner');
+    const failMsg = document.getElementById('failMsg');
 
-      checkbox.style.display = 'none'; // Only hide the checkbox
-      spinner.style.display = 'block';
-      failMsg.style.display = 'none';
+    checkbox.style.display = 'none';
+    spinner.style.display = 'block';
+    failMsg.style.display = 'none';
 
+    setTimeout(() => {
+      spinner.style.display = 'none';
+      failMsg.style.display = 'block';
+
+      // Wait a bit, then bring back the checkbox
       setTimeout(() => {
-        spinner.style.display = 'none';
-        failMsg.style.display = 'block';
-      }, 2000);
-    }
+        failMsg.style.display = 'none';
+        checkbox.style.display = 'block';
+      }, 1000); // Adjust this delay if you want it faster/slower
+    }, 2000);
+  }
   </script>
 </body>
 </html>
