@@ -1,4 +1,104 @@
-<!DOCTYPE HTML>
-<html>
-  <p>If you can read this, your internet is shitty</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Joke reCAPTCHA</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .recaptcha-box {
+      background-color: #fff;
+      border: 1px solid #d3d3d3;
+      border-radius: 4px;
+      padding: 20px;
+      width: 300px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+      position: relative;
+    }
+
+    .checkbox-area {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .fake-checkbox {
+      width: 20px;
+      height: 20px;
+      border: 2px solid #ccc;
+      border-radius: 3px;
+      margin-right: 10px;
+      position: relative;
+    }
+
+    .spinner {
+      border: 2px solid #ccc;
+      border-top: 2px solid #4285f4;
+      border-radius: 50%;
+      width: 16px;
+      height: 16px;
+      animation: spin 1s linear infinite;
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      display: none;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .label-text {
+      font-size: 14px;
+    }
+
+    .fail-message {
+      color: red;
+      font-size: 13px;
+      margin-top: 15px;
+      display: none;
+    }
+
+    .recaptcha-logo {
+      margin-top: 15px;
+      font-size: 10px;
+      color: #999;
+      text-align: right;
+    }
+  </style>
+</head>
+<body>
+  <div class="recaptcha-box" onclick="triggerCaptcha()">
+    <div class="checkbox-area">
+      <div class="fake-checkbox" id="checkbox">
+        <div class="spinner" id="spinner"></div>
+      </div>
+      <div class="label-text">I am not a robot</div>
+    </div>
+    <div class="fail-message" id="failMsg">❌ Verification failed. Try again.</div>
+    <div class="recaptcha-logo">reCAPTCHA parody</div>
+  </div>
+
+  <script>
+    function triggerCaptcha() {
+      const spinner = document.getElementById('spinner');
+      const failMsg = document.getElementById('failMsg');
+      spinner.style.display = 'block';
+      failMsg.style.display = 'none';
+
+      setTimeout(() => {
+        spinner.style.display = 'none';
+        failMsg.style.display = 'block';
+      }, 2000); // Simulate 2-second "verification"
+    }
+  </script>
+</body>
 </html>
