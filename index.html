@@ -95,25 +95,51 @@
 
 
   <script>
+    let firstAttempt = true;
+
     function triggerCaptcha() {
       const checkbox = document.getElementById('checkbox');
       const spinner = document.getElementById('spinner');
       const failMsg = document.getElementById('failMsg');
 
-      // Hide fail message at start
-      failMsg.style.display = 'none';
+      const messages = [
+        "Verification failed. Try again.",
+        "Survey Says... No.",
+        "You passed the turing test... Unfortunately.",
+        "You blinked, Can't do that here.",
+        "Nice try, meatbag.",
+        "Verification Failed: Life presence detected.",
+        "Bite my shiny metal ass!",
+        "You're making this harder than it needs to be.",
+        "CAPTCHA failed. Again.",
+        "Your DNA betrayed you.",
+        "Sarcasm Detected",
+        "You hesitated. Robots don’t hesitate.",
+        "If you're a robot, you need an upgrade.",
+        "You sighed before clicking. We heard it.",
+        "You paused to reflect. That's something only humans do.",
+        "You're Not Fooling Anyone, {NAME NOT FOUND}"
+      ];
 
-      // Hide checkbox, show spinner
+      failMsg.style.display = 'none';
       checkbox.style.display = 'none';
       spinner.style.display = 'block';
 
-      // Random delay between 1000ms and 5000ms
-      const delay = Math.floor(Math.random() * 9000) + 1000;
+      const delay = Math.floor(Math.random() * 6000) + 1000;
 
       setTimeout(() => {
         spinner.style.display = 'none';
+
+        if (firstAttempt) {
+          failMsg.textContent = "Verification failed. Try again.";
+          firstAttempt = false;
+        } else {
+          const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+          failMsg.textContent = randomMessage;
+        }
+
         failMsg.style.display = 'block';
-        checkbox.style.display = 'block'; // Let them try again
+        checkbox.style.display = 'block';
       }, delay);
     }
   </script>
