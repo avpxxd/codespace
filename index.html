@@ -38,6 +38,11 @@
       position: relative;
     }
 
+    .spinner-label {
+      display: flex;
+      align-items: center;
+  }
+
     .spinner {
       border: 3px solid #ccc;
       border-top: 3px solid #4285f4;
@@ -46,8 +51,7 @@
       height: 24px;
       animation: spin 1s linear infinite;
       display: none;
-      margin: 10px auto;
-      align-items: left;
+      margin-right: 10px; /* space between spinner and label */
     }
 
     @keyframes spin {
@@ -77,10 +81,14 @@
 <body>
   <div class="recaptcha-box" onclick="triggerCaptcha()">
   <div class="checkbox-area">
-    <div class="fake-checkbox" id="checkbox"></div>
-    <div class="label-text">I am not a robot</div>
-    <div class="spinner" id="spinner"></div>
-   </div> 
+    <div id="checkbox" class="fake-checkbox"></div>
+
+  <!-- Spinner + Label grouped together -->
+    <div class="spinner-label">
+      <div class="spinner" id="spinner"></div>
+      <div class="label-text">I am not a robot</div>
+    </div>
+  </div>
   <div class="fail-message" id="failMsg">Verification failed. Try again.</div>
   <div class="recaptcha-logo">reCAPTCHA parody</div>
 </div>
